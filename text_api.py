@@ -1,4 +1,3 @@
-# AIzaSyDgNboDtt2ncO1nHCk4e5BLNeOSEBb_2Lw
 import google.generativeai as genai
 
 # تعريف API Key
@@ -9,7 +8,7 @@ genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-2.0-flash')
 
 # بناء الـ Prompt ديناميكيًّا
-def prompt(ingredients, meal_type): #, num_people, dietary_restrictions
+def prompt(ingredients, meal_type):
     return f"""
     أنت مساعد ذكي لإنشاء وصفات طعام. قم بإنشاء وصفة باستخدام المكونات التالية: {ingredients}. تأكد من أن الوصفة:  
     1. تركز على تقليل الهدر باستخدام المكونات المتوفرة.  
@@ -27,14 +26,8 @@ def get_user_input():
 # الحصول على مدخلات المستخدم
 ingredients, meal_type = get_user_input()
 
-# # مدخلات المستخدم
-# ingredients = "موز، دقيق، بيض، سكر"
-# meal_type = "فطور"
-# # num_people = "٤"
-# # dietary_restrictions = "لا ألبان"
-
 # توليد الـ Prompt
-prompt = prompt(ingredients, meal_type)  # num_people, dietary_restrictions
+prompt = prompt(ingredients, meal_type)  
 
 # إرسال الطلب واستقبال النتيجة
 response = model.generate_content(prompt)
